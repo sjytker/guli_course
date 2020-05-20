@@ -1,9 +1,12 @@
 package com.example.demo.edu.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.example.demo.edu.entity.Teacher;
+import com.example.demo.edu.service.TeacherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * <p>
@@ -14,8 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2020-05-19
  */
 @RestController
-@RequestMapping("/edu/teacher")
+@RequestMapping("/eduservice/teacher")
 public class TeacherController {
 
+    private final TeacherService teacherService;
+
+    public TeacherController(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
+
+    @GetMapping("findAll")
+    public List<Teacher> findAllTeacher() {
+        List<Teacher> list = teacherService.list(null);
+        return list;
+    }
+
+    @DeleteMapping("{id}")
+    public boolean removeById(@PathVariable String id) {
+        return teacherService.removeById(id);
+    }
 }
 
