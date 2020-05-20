@@ -1,4 +1,4 @@
-package com.example.demo.edu.Config;
+package com.atguigu.eduservice.Config;
 
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.example.demo.edu.mapper")
+@MapperScan("com.atguigu.eduservice.mapper")
 public class config {
 
     @Bean

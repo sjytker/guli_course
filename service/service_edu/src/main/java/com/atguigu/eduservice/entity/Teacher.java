@@ -1,4 +1,4 @@
-package com.example.demo.edu.entity;
+package com.atguigu.eduservice.entity;
 
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;

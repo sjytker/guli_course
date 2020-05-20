@@ -13,7 +13,7 @@
         <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.atguigiu</groupId>
+    <groupId>com.atguigu</groupId>
     <artifactId>guli</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>

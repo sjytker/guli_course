@@ -1,8 +1,8 @@
-package com.example.demo.edu.service.impl;
+package com.atguigu.eduservice.service.impl;
 
-import com.example.demo.edu.entity.Teacher;
-import com.example.demo.edu.mapper.TeacherMapper;
-import com.example.demo.edu.service.TeacherService;
+import com.atguigu.eduservice.service.TeacherService;
+import com.atguigu.eduservice.entity.Teacher;
+import com.atguigu.eduservice.mapper.TeacherMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
