@@ -1,10 +1,8 @@
 package com.atguigu.eduservice.entity;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -56,9 +54,11 @@ public class Teacher implements Serializable {
     private Integer isDeleted;
 
     @ApiModelProperty(value = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
 
     @ApiModelProperty(value = "更新时间")
+    @TableField(fill = FieldFill.UPDATE)
     private Date gmtModified;
 
 
