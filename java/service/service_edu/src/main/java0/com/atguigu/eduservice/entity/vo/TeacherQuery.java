@@ -1,16 +1,10 @@
 package com.atguigu.eduservice.entity.vo;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.io.Serializable;
-
-@ApiModel(value = "Teacher查询对象", description = "讲师查询对象封装")
 @Data
-public class TeacherQuery implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class TeacherQuery {
 
     @ApiModelProperty(value = "教师名称,模糊查询")
     private String name;

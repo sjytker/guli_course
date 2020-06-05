@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author testjava
- * @since 2020-05-30
+ * @since 2020-02-29
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,7 +30,7 @@ public class EduSubject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "课程类别ID")
-    @TableId(value = "id", type = IdType.ID_WORKER)
+    @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
     @ApiModelProperty(value = "类别名称")
