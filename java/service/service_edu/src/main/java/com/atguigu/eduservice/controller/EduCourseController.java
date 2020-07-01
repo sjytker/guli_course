@@ -30,5 +30,17 @@ public class EduCourseController {
         String id = courseService.saveCourseInfo(courseInfoVo);
         return R.ok().data("courseId",id);
     }
+
+    @GetMapping("getCourseInfo/{courseId}")
+    public R getCourseInfo(@PathVariable String courseId) {
+        CourseInfoVo courseInfoVo = courseService.getCourseInfo(courseId);
+        return R.ok().data("courseInfoVo", courseInfoVo);
+    }
+
+    @PostMapping("updateInfo")
+    public R updateCourseInfo(@RequestBody CourseInfoVo courseInfoVo) {
+        courseService.updateCourseInfo(courseInfoVo);
+        return R.ok();
+    }
 }
 
