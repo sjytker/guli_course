@@ -1,4 +1,4 @@
-package com.atguigu.servicebase.handler;
+package com.atguigu.servicebase;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
