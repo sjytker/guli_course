@@ -21,7 +21,8 @@ public class JwtUtils {
 
     public static String getJwtToken(String id, String nickname){
 
-        String JwtToken = Jwts.builder()
+
+        return Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setHeaderParam("alg", "HS256")
                 .setSubject("guli-user")
@@ -31,8 +32,6 @@ public class JwtUtils {
                 .claim("nickname", nickname)
                 .signWith(SignatureAlgorithm.HS256, APP_SECRET)
                 .compact();
-
-        return JwtToken;
     }
 
     /**
@@ -75,6 +74,7 @@ public class JwtUtils {
      */
     public static String getMemberIdByJwtToken(HttpServletRequest request) {
         String jwtToken = request.getHeader("token");
+        System.out.println("get member token : " + jwtToken);
         if(StringUtils.isEmpty(jwtToken)) return "";
         Jws<Claims> claimsJws = Jwts.parser().setSigningKey(APP_SECRET).parseClaimsJws(jwtToken);
         Claims claims = claimsJws.getBody();

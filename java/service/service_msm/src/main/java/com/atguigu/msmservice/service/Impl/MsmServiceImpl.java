@@ -23,7 +23,7 @@ public class MsmServiceImpl implements MsmService {
         if(StringUtils.isEmpty(phone)) return false;
 
         DefaultProfile profile =
-                DefaultProfile.getProfile("default", "LTAIq6nIPY09VROj", "FQ7UcixT9wEqMv9F35nORPqKr8XkTF");
+                DefaultProfile.getProfile("default", "LTAI4G2zeUbPPkq1ALCvFzsH", "7bRiMBfkOMU1NdDQwoXPuSEyCh16qF");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
@@ -33,13 +33,13 @@ public class MsmServiceImpl implements MsmService {
         request.setVersion("2017-05-25");
         request.setAction("SendSms");
 
-        request.putQueryParameter("PhoneNumbers", phone);
-        request.putQueryParameter("SignName", "follow谷粒教育网站");
-        request.putQueryParameter("TemplateCode", "SMS_191818257");
-        request.putQueryParameter("TemplateParam", JSONObject.toJSONString(param));
+        request.putQueryParameter("PhoneNumbers", phone);  // phone
+        request.putQueryParameter("SignName", "谷粒教育网站");  // 签名
+        request.putQueryParameter("TemplateCode", "SMS_205133772");  // 模板 code
+        request.putQueryParameter("TemplateParam", JSONObject.toJSONString(param));  // 验证码数据
         try {
             CommonResponse res = client.getCommonResponse(request);
-            boolean success = res.getHttpResponse().isSuccess();
+            return res.getHttpResponse().isSuccess();
         } catch (Exception e) {
             e.printStackTrace();
         }

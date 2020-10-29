@@ -35,12 +35,16 @@ public class UcenterMemberController {
         //调用service方法实现登录
         //返回token值，使用jwt生成
         String token = memberService.login(member);
+        System.out.println("*************  " + token);
         return R.ok().data("token",token);
     }
 
     //注册
     @PostMapping("register")
     public R registerUser(@RequestBody RegisterVo registerVo) {
+        System.out.println("*****************");
+        System.out.println("registering");
+        System.out.println("*****************");
         memberService.register(registerVo);
         return R.ok();
     }
