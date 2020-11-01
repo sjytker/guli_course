@@ -14,6 +14,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.management.Query;
+
 /**
  * <p>
  * 会员表 服务实现类
@@ -100,6 +102,13 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         ucenterMember.setAvatar("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603899330805&di=3e289d9715f8f6e27b25739557f2ee32&imgtype=0&src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202004%2F12%2F20200412213247_RMvQM.thumb.400_0.jpeg");
         baseMapper.insert(ucenterMember);
 
+    }
+
+    @Override
+    public UcenterMember getOpenIdMember(String openid) {
+        QueryWrapper<UcenterMember> wrapper = new QueryWrapper<>();
+        wrapper.eq("openid", openid);
+        return baseMapper.selectOne(wrapper);
     }
 
     //    //注册的方法

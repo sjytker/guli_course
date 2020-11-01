@@ -59,4 +59,12 @@ public class VodController {
         vodService.removeMoreAlyVideo(videoIdList);
         return R.ok();
     }
+
+    @GetMapping("getPlayAuth/{id}")
+    public R getPlayAuth(@PathVariable String id) {
+        try {
+            InitVodCilent.initVodClient(ConstantVodUtils.ACCESS_KEY_ID, ConstantVodUtils.ACCESS_KEY_SECRET);
+
+        }
+    }
 }
