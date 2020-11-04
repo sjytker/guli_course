@@ -21,6 +21,7 @@
         <module>service_ACL</module>
         <module>service_CMS</module>
         <module>service_order</module>
+        <module>service_statistics</module>
 
     </modules>
 
@@ -106,10 +107,13 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
-        <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
         <!-- velocity 模板引擎, Mybatis Plus 代码生成器需要 -->
@@ -172,7 +176,6 @@
             <version>4.12</version>
         </dependency>
 
-
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -193,6 +196,37 @@
             <artifactId>activation</artifactId>
             <version>1.1.1</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.tedzhdz</groupId>-->
+<!--            <artifactId>wxpay-sdk</artifactId>-->
+<!--            <version>3.0.9</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/red.htt/wxpay-sdk -->
+        <dependency>
+            <groupId>red.htt</groupId>
+            <artifactId>wxpay-sdk</artifactId>
+            <version>3.0.9.1</version>
+        </dependency>
+
     </dependencies>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes><include>**/*.xml</include></includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <classifier>execute</classifier>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

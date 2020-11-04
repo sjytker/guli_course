@@ -111,6 +111,11 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         return baseMapper.selectOne(wrapper);
     }
 
+    @Override
+    public Integer countRegisterDay(String day) {
+        return baseMapper.countRegisterDay(day);
+    }
+
     //    //注册的方法
 //    @Override
 //    public void register(RegisterVo registerVo) {

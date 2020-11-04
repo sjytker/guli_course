@@ -27,7 +27,6 @@
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-sdk-vod-upload</artifactId>
-            <version>1.4.12</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

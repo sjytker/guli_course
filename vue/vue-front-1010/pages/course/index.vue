@@ -19,7 +19,7 @@
                   <a title="全部" href="#">全部</a>
                 </li>
                 <li v-for="(item,index) in subjectNestedList" :key="index" :class="{active:oneIndex==index}">
-                  <a :title="item.title" href="#" @click="searchOne(item.id,index, item.children)">{{item.title}}</a>
+                  <a :title="item.title" href="#" @click="searchOne(item.id,index)">{{item.title}}</a>
                 </li>
                
               </ul>
@@ -193,14 +193,13 @@ export default {
     },
 
     //4 点击某个一级分类，查询对应二级分类
-    searchOne(subjectParentId,index, children) {
+    searchOne(subjectParentId,index) {
       //把传递index值赋值给oneIndex,为了active样式生效
       this.oneIndex = index
 
       this.twoIndex = -1
       this.searchObj.subjectId = ""
-    //  this.subSubjectList = []
-      this.subSubjectList = children
+      this.subSubjectList = []
 
       //把一级分类点击id值，赋值给searchObj
       this.searchObj.subjectParentId = subjectParentId
@@ -209,21 +208,20 @@ export default {
 
       //拿着点击一级分类id 和 所有一级分类id进行比较，
       //如果id相同，从一级分类里面获取对应的二级分类
-      // for(let i=0;i<this.subjectNestedList.length;i++) {
-      //   //获取每个一级分类
-      //   var oneSubject = this.subjectNestedList[i]
-      //   //比较id是否相同
-      //   if(subjectParentId == oneSubject.id) {
-      //     //从一级分类里面获取对应的二级分类
-      //     this.subSubjectList = oneSubject.children
-      //   }
-      // }
+      for(let i=0;i<this.subjectNestedList.length;i++) {
+        //获取每个一级分类
+        var oneSubject = this.subjectNestedList[i]
+        //比较id是否相同
+        if(subjectParentId == oneSubject.id) {
+          //从一级分类里面获取对应的二级分类
+          this.subSubjectList = oneSubject.children
+        }
+      }
     },
 
     //5 点击某个二级分类实现查询
     searchTwo(subjectId,index) {
       //把index赋值,为了样式生效
-      console.log("selecting twosubject id : " + subjectId)
       this.twoIndex = index
       //把二级分类点击id值，赋值给searchObj
       this.searchObj.subjectId = subjectId

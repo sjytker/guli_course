@@ -27,17 +27,17 @@ public class IndexFrontController {
     @GetMapping("index")
     public R index() {
         QueryWrapper<EduCourse> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("id");
+        wrapper.orderByAsc("id");
         wrapper.last("limit 8");
         List<EduCourse> eduList = courseService.list(wrapper);
 
         QueryWrapper<EduTeacher> wrapperTeacher = new QueryWrapper<>();
-        wrapperTeacher.orderByDesc("id");
+        wrapperTeacher.orderByAsc("id");
         wrapperTeacher.last("limit 4");
         List<EduTeacher> teacherList = eduTeacherService.list(wrapperTeacher);
 
-        System.out.println("receive an indexfront request");
-        System.out.println(eduList.size() + " " + teacherList.size());
+//        System.out.println("receive an indexfront request");
+//        System.out.println(eduList.size() + " " + teacherList.size());
         return R.ok().data("eduList", eduList).data("teacherList", teacherList);
     }
 }

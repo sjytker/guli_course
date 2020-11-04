@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author testjava
- * @since 2020-10-31
+ * @since 2020-03-13
  */
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
@@ -29,15 +29,19 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Autowired
     private UcenterClient ucenterClient;
 
+    //1 生成订单的方法
     @Override
     public String createOrders(String courseId, String memberId) {
-
+        //通过远程调用根据用户id获取用户信息
         UcenterMemberOrder userInfoOrder = ucenterClient.getUserInfoOrder(memberId);
+
+        //通过远程调用根据课程id获取课信息
         CourseWebVoOrder courseInfoOrder = eduClient.getCourseInfoOrder(courseId);
 
+        //创建Order对象，向order对象里面设置需要数据
         Order order = new Order();
-        order.setOrderNo(OrderNoUtil.getOrderNo());
-        order.setCourseId(courseId);
+        order.setOrderNo(OrderNoUtil.getOrderNo());//订单号
+        order.setCourseId(courseId); //课程id
         order.setCourseTitle(courseInfoOrder.getTitle());
         order.setCourseCover(courseInfoOrder.getCover());
         order.setTeacherName(courseInfoOrder.getTeacherName());
@@ -45,9 +49,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         order.setMemberId(memberId);
         order.setMobile(userInfoOrder.getMobile());
         order.setNickname(userInfoOrder.getNickname());
-        order.setStatus(0);   // 支付状态
-        order.setPayType(1);  // 微信 or 支付宝
+        order.setStatus(0);  //订单状态（0：未支付 1：已支付）
+        order.setPayType(1);  //支付类型 ，微信1
         baseMapper.insert(order);
+         //返回订单号
         return order.getOrderNo();
     }
 }
