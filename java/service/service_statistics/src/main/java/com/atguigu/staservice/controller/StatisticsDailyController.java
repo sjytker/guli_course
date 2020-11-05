@@ -38,5 +38,6 @@ public class StatisticsDailyController {
         Map<String,Object> map = staService.getShowData(type,begin,end);
         return R.ok().data(map);
     }
+
 }
 
