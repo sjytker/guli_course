@@ -6,8 +6,10 @@ import lombok.Data;
 import java.util.HashMap;
 import java.util.Map;
 
+//统一返回结果的类
 @Data
 public class R {
+
     @ApiModelProperty(value = "是否成功")
     private Boolean success;
 
@@ -20,9 +22,11 @@ public class R {
     @ApiModelProperty(value = "返回数据")
     private Map<String, Object> data = new HashMap<String, Object>();
 
-    private R(){}
+    //把构造方法私有
+    private R() {}
 
-    public static R ok(){
+    //成功静态方法
+    public static R ok() {
         R r = new R();
         r.setSuccess(true);
         r.setCode(ResultCode.SUCCESS);
@@ -30,7 +34,8 @@ public class R {
         return r;
     }
 
-    public static R error(){
+    //失败静态方法
+    public static R error() {
         R r = new R();
         r.setSuccess(false);
         r.setCode(ResultCode.ERROR);

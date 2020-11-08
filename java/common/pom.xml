@@ -14,6 +14,8 @@
     <modules>
         <module>service_base</module>
         <module>common_utils</module>
+        <module>spring_security</module>
+
     </modules>
 
     <dependencies>
@@ -55,12 +57,11 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <!-- spring2.X集成redis所需common-pool2-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
-            <version>2.8.0</version>
+            <version>2.6.0</version>
         </dependency>
-
     </dependencies>
-
 </project>
