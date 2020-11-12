@@ -12,7 +12,7 @@
     <artifactId>service_ucenter</artifactId>
 
     <build>
-        <finalName>service_statistics</finalName>
+        <finalName>service_ucenter</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

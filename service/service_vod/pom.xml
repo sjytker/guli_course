@@ -44,7 +44,7 @@
     </dependencies>
 
     <build>
-        <finalName>service_statistics</finalName>
+        <finalName>service_vod</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
