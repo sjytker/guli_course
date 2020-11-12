@@ -11,5 +11,13 @@
 
     <artifactId>service_statistics</artifactId>
 
-
+    <build>
+        <finalName>service_statistics</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
