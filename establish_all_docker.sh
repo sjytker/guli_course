@@ -39,7 +39,7 @@ do
 			
 
 			#查看容器id
-			CID=$(docker ps | grep "$service_name" | awk '{print $1}')
+			CID=$(docker ps -a | grep "$service_name" | awk '{print $1}')
 			echo "CID $CID"
 			if [ -n "$CID" ]
 			then
