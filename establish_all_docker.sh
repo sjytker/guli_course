@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# start all service with dockers
+
 path=`pwd`
 # service="service"
 ls $path | while read line
@@ -50,7 +52,7 @@ do
 				docker rm $service_name
 			fi
 			#启动
-			docker run -d --name $service_name $service_name
+			docker run -d --name $service_name --net=host $service_name
 		done
 	fi
 done
