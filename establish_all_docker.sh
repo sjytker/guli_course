@@ -1,13 +1,16 @@
 #!/bin/bash
-
 # start all service with dockers
 
-path=`pwd`
-# service="service"
+root=`pwd`
+echo "script in ${root}"
+
 ls $path | while read line
 do
 	if [ $line == "service" ];
 	then
+#########################################################################################
+#                           service folder
+#########################################################################################
 		service_path="`pwd`/service"
 		echo $service_path
 		cd $service_path
@@ -54,11 +57,16 @@ do
 			#启动
 			docker run -d --name $service_name --net=host $service_name
 		done
+		cd ${root}
 	fi
+
 
 	if [ $line == "infrastructure" ];
 	then
-		infrastructure_path="`pwd`/infrastructure_path"
+#########################################################################################
+#                           infrastructure folder
+#########################################################################################
+		infrastructure_path="`pwd`/infrastructure"
 		echo $infrastructure_path
 		cd $infrastructure_path
 # in each service
@@ -103,6 +111,7 @@ do
 			fi
 			#启动
 			docker run -d --name $service_name --net=host $service_name
-		done	
+		done
+		cd $root	
 	fi
 done
