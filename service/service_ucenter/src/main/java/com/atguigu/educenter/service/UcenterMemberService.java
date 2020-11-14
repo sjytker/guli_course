@@ -1,5 +1,6 @@
 package com.atguigu.educenter.service;
 
+import com.atguigu.commonutils.R;
 import com.atguigu.educenter.entity.UcenterMember;
 import com.atguigu.educenter.entity.vo.RegisterVo;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -18,7 +19,7 @@ public interface UcenterMemberService extends IService<UcenterMember> {
     String login(UcenterMember member);
 
     //注册的方法
-    void register(RegisterVo registerVo);
+    R register(RegisterVo registerVo);
 
     UcenterMember getOpenIdMember(String openid);
 

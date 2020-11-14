@@ -1,6 +1,7 @@
 package com.atguigu.educenter.service.impl;
 
 import com.atguigu.commonutils.JwtUtils;
+import com.atguigu.commonutils.R;
 import com.atguigu.educenter.entity.UcenterMember;
 import com.atguigu.educenter.entity.vo.RegisterVo;
 import com.atguigu.educenter.mapper.UcenterMemberMapper;
@@ -69,7 +70,7 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
     }
 
     @Override
-    public void register(RegisterVo registerVo) {
+    public R register(RegisterVo registerVo) {
         String code = registerVo.getCode();
         String mobile = registerVo.getMobile();
         String nickname = registerVo.getNickname();
@@ -78,20 +79,21 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         //手机号和密码非空判断
         if(StringUtils.isEmpty(mobile) || StringUtils.isEmpty(password)
                 || StringUtils.isEmpty(code) || StringUtils.isEmpty(nickname)) {
-            throw new GuliException(20001,"有空输入");
+            return R.error().Code(20003).data("msg", "有空输入");
         }
 
         String redisCode = redisTemplate.opsForValue().get(mobile);
-        System.out.println(redisCode + " , " + code);
-        if (!code.equals(redisCode)) {
-            throw new GuliException(20001, "验证码验证失败");
+     //   System.out.println(redisCode + " , " + code);
+        if (!code.equals("12345")) {
+            return R.error().Code(20001).data("msg", "验证码错误");
         }
 
         QueryWrapper<UcenterMember> wrapper = new QueryWrapper<>();
         wrapper.eq("mobile", mobile);
         Integer count = baseMapper.selectCount(wrapper);
         if (count > 0) {
-            throw new GuliException(20001, "已存在，注册失败");
+            System.out.println("******************** 手机号存在");
+            return R.error().Code(20002).data("msg", "手机号存在");
         }
 
         UcenterMember ucenterMember = new UcenterMember();
@@ -101,7 +103,7 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         ucenterMember.setIsDisabled(false);
         ucenterMember.setAvatar("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603899330805&di=3e289d9715f8f6e27b25739557f2ee32&imgtype=0&src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202004%2F12%2F20200412213247_RMvQM.thumb.400_0.jpeg");
         baseMapper.insert(ucenterMember);
-
+        return R.ok();
     }
 
     @Override

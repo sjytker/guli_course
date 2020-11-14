@@ -48,12 +48,9 @@ public class UcenterMemberController {
         System.out.println("*****************");
         System.out.println("registering");
         System.out.println("*****************");
-        try {
-            memberService.register(registerVo);
-        } catch (Exception e) {
-            return R.error();
-        }
-        return R.ok();
+        R res = memberService.register(registerVo);
+        System.out.println(res);
+        return res;
     }
 
     //根据token获取用户信息

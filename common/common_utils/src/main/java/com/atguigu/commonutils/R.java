@@ -53,7 +53,7 @@ public class R {
         return this;
     }
 
-    public R code(Integer code){
+    public R Code(Integer code){
         this.setCode(code);
         return this;
     }
