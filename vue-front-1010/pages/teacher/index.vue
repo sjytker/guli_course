@@ -1,4 +1,3 @@
-
 <template>
   <div id="aCoursesList" class="bg-fa of">
     <!-- 讲师列表 开始 -->

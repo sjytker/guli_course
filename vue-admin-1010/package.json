@@ -9,12 +9,18 @@
     "start": "npm run dev",
     "build": "node build/build.js",
     "build:report": "npm_config_report=true npm run build",
+    "client": "node build/client.js",
+    "build:client": "cross-env NODE_ENV=production env_config=client node build/build.js",
+    "build:driver": "cross-env NODE_ENV=production env_config=driver node build/build.js",
+    "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js",
+    "build:dev": "cross-env NODE_ENV=production env_config=dev node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "test": "npm run lint",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
     "axios": "0.18.0",
+    "cross-env": "^7.0.2",
     "echarts": "^4.9.0",
     "element-ui": "2.4.6",
     "js-cookie": "2.2.0",
