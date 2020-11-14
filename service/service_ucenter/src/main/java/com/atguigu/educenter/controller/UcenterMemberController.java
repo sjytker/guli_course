@@ -48,7 +48,11 @@ public class UcenterMemberController {
         System.out.println("*****************");
         System.out.println("registering");
         System.out.println("*****************");
-        memberService.register(registerVo);
+        try {
+            memberService.register(registerVo);
+        } catch (Exception e) {
+            return R.error();
+        }
         return R.ok();
     }
 
@@ -67,7 +71,7 @@ public class UcenterMemberController {
         UcenterMember member = memberService.getById(id);
         UcenterMemberOrder ucenterMemberOrder = new UcenterMemberOrder();
         BeanUtils.copyProperties(member, ucenterMemberOrder);
-        return null;
+        return ucenterMemberOrder;
     }
 
     @GetMapping("countRegister/{day}")

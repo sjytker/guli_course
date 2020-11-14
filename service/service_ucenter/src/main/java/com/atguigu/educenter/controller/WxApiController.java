@@ -96,7 +96,7 @@ public class WxApiController {
 
             String jwtToken = JwtUtils.getJwtToken(member.getId(), member.getNickname());
 
-            return "redirect:http://localhost:9500?token=" + jwtToken;
+            return "redirect:http://localhost:3000?token=" + jwtToken;
         }catch (Exception e) {
             throw new GuliException(20001, "登陆失败");
         }

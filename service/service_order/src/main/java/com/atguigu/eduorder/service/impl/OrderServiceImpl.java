@@ -33,10 +33,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Override
     public String createOrders(String courseId, String memberId) {
         //通过远程调用根据用户id获取用户信息
+        System.out.println(courseId + "  " + memberId);
         UcenterMemberOrder userInfoOrder = ucenterClient.getUserInfoOrder(memberId);
-
+        System.out.println("got userinfo : " + userInfoOrder);
         //通过远程调用根据课程id获取课信息
         CourseWebVoOrder courseInfoOrder = eduClient.getCourseInfoOrder(courseId);
+        System.out.println("got courseInfo : " + courseInfoOrder);
 
         //创建Order对象，向order对象里面设置需要数据
         Order order = new Order();
