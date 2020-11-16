@@ -55,7 +55,7 @@
       <div class="more-sign">
         <h6>社交帐号直接注册</h6>
         <ul>
-          <li><a id="weixin" class="weixin" target="_blank" href="http://localhost:8222/api/ucenter/wx/login"><i
+          <li><a id="weixin" class="weixin" target="_blank" href="http://119.29.169.252:8222/api/ucenter/wx/login"><i
             class="iconfont icon-weixin"/></a></li>
         </ul>
       </div>
